@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Safety Scanner (Image & Text)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <div class="card">
+            <h1>🛡️ AI Safety Scanner</h1>
+            <p class="subtitle">Detects Unsafe Images AND Unwanted Text</p>
+
+            <!-- Config Panel -->
+            <div class="config-panel" id="configPanel">
+                <h3>⚙️ Azure Setup</h3>
+                <div class="input-group">
+                    <input type="text" id="azureEndpoint"
+                        placeholder="Endpoint (e.g., https://...cognitiveservices.azure.com/)" />
+                </div>
+                <div class="input-group">
+                    <input type="password" id="azureKey" placeholder="API Key" />
+                </div>
+                <button id="btnSaveConfig" class="btn btn-primary">Save Keys</button>
+                <p class="note">Keys stored in browser session only.</p>
+            </div>
+
+            <!-- Main App Panel -->
+            <div class="scanner-panel" id="scannerPanel" style="display: none;">
+                <button id="btnEditConfig" class="btn btn-small btn-secondary">Change Keys</button>
+
+                <!-- TABS -->
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('image')">🖼️ Image Scan</button>
+                    <button class="tab-btn" onclick="switchTab('text')">📝 Text Scan</button>
+                </div>
+
+                <!-- IMAGE SCAN CONTENT -->
+                <div id="imageTabContent" class="tab-content">
+                    <div class="input-group" style="margin-top: 15px;">
+                        <input type="text" id="imageUrl" placeholder="Paste Image URL..." />
+                        <button id="btnScanImage" class="btn btn-primary">Full Scan</button>
+                    </div>
+                    <div class="preview-section">
+                        <img id="imagePreview" alt="Preview" style="display:none;" />
+                        <div id="placeholderBox" class="placeholder-box">Image Preview Area</div>
+                    </div>
+                </div>
+
+                <!-- TEXT SCAN CONTENT -->
+                <div id="textTabContent" class="tab-content" style="display: none;">
+                    <div class="input-group" style="margin-top: 15px; flex-direction: column;">
+                        <textarea id="textInput"
+                            placeholder="Paste or type text here to analyze for unwanted content..."
+                            rows="6"></textarea>
+                        <button id="btnScanText" class="btn btn-primary">Analyze Text</button>
+                    </div>
+                </div>
+
+                <div id="loader" class="loader" style="display:none;">
+                    <div class="spinner"></div>
+                    <p id="loaderText">Scanning...</p>
+                </div>
+
+                <div class="results-panel" id="resultsPanel" style="display:none;">
+                    <h3>📊 Analysis Report</h3>
+
+                    <!-- Dynamic Content based on Tab -->
+                    <div id="dynamicReport"></div>
+
+                    <div id="verdictBox" class="verdict-box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
