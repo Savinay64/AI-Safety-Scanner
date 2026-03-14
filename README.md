@@ -32,8 +32,7 @@ Built with pure HTML, CSS, and JavaScript, this tool demonstrates practical inte
 ### 🖼️ Image Scanning Interface
 
 ### ⌨️ Text Scanning Interface
-![Text Scan Demo](https://via.placeholder.com/800x450/0f0c29/00f2ff?text=Insert+Screenshot+of+Text+Scan+Here)
-*> Screenshot showing the Text Scan tab detecting unwanted words.*
+
 
 ---
 
